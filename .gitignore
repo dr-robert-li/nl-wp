@@ -1,0 +1,93 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE Files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.swp
+*.swo
+
+# Dependency Directories
+node_modules/
+vendor/
+bower_components/
+
+# Compiled Assets
+*.min.js
+*.min.css
+dist/
+build/
+
+# Package Files
+*.zip
+*.tar.gz
+*.tar
+
+# WordPress Specific
+local-sites/
+volumes/
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/mu-plugins/
+wp-content/wp-cache-config.php
+
+# Environment Files
+.env
+.env.*
+!.env.example
+
+# Log Files
+*.log
+logs/
+error_log
+debug.log
+
+# Plugin Specific
+.cache/
+.sass-cache/
+temp_data/
+*.bak
+*.tmp
+
+# Python Virtual Environment
+env/
+venv/
+ENV/
+.Python
+pyvenv.cfg
+__pycache__/
+*.py[cod]
+*$py.class
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Database Files
+*.sqlite
+*.sqlite3
+*.db
+
+# Milvus Vector DB
+rdb_data/
+etcd/
+
+# Misc
+.htaccess
+.user.ini
+sitemap.xml
+sitemap.xml.gz

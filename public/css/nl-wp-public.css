@@ -1,0 +1,294 @@
+/**
+ * NLWeb for WordPress - Frontend CSS
+ */
+
+/* Main Chat Widget Container */
+.nlwp-chat-widget {
+    position: fixed;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+.nlwp-position-bottom-right {
+    right: 20px;
+    bottom: 20px;
+}
+
+.nlwp-position-bottom-left {
+    left: 20px;
+    bottom: 20px;
+}
+
+/* Chat Button */
+.nlwp-chat-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--nlwp-primary-color, #0073aa);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.nlwp-chat-button:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.nlwp-chat-button svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+.nlwp-chat-button.active svg {
+    transform: rotate(45deg);
+}
+
+/* Chat Window */
+.nlwp-chat-window {
+    position: absolute;
+    bottom: 80px;
+    width: 350px;
+    height: 500px;
+    max-height: 80vh; /* Prevent it from being too tall */
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.nlwp-position-bottom-right .nlwp-chat-window {
+    right: 0;
+}
+
+.nlwp-position-bottom-left .nlwp-chat-window {
+    left: 0;
+}
+
+.nlwp-chat-window.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Chat Header */
+.nlwp-chat-header {
+    padding: 15px;
+    background-color: var(--nlwp-primary-color, #0073aa);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nlwp-chat-header-title {
+    font-size: 16px;
+}
+
+.nlwp-chat-close {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nlwp-chat-close:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Chat Messages */
+.nlwp-chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    height: calc(100% - 120px); /* Fixed height calculation */
+    min-height: 200px; /* Minimum height to ensure scrollability */
+    display: flex;
+    flex-direction: column;
+}
+
+.nlwp-message {
+    margin-bottom: 15px;
+    max-width: 80%;
+    clear: both;
+    word-wrap: break-word; /* Ensure long text wraps properly */
+    white-space: pre-wrap; /* Preserve newlines but still wrap */
+}
+
+.nlwp-message-user {
+    float: right;
+    background-color: var(--nlwp-primary-color, #0073aa);
+    color: white;
+    border-radius: 18px 18px 0 18px;
+    padding: 10px 15px;
+}
+
+.nlwp-message-bot {
+    float: left;
+    background-color: white;
+    color: #333;
+    border-radius: 18px 18px 18px 0;
+    padding: 10px 15px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.nlwp-thinking {
+    float: left;
+    background-color: white;
+    border-radius: 18px 18px 18px 0;
+    padding: 10px 15px;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.nlwp-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: nlwp-pulse 1.5s infinite;
+}
+
+.nlwp-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.nlwp-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes nlwp-pulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Chat Input */
+.nlwp-chat-input-container {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.nlwp-chat-input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 15px;
+    outline: none;
+    font-size: 14px;
+}
+
+.nlwp-chat-input:focus {
+    border-color: var(--nlwp-primary-color, #0073aa);
+}
+
+.nlwp-chat-submit {
+    background-color: var(--nlwp-primary-color, #0073aa);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nlwp-chat-submit:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.nlwp-chat-submit svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+}
+
+/* Shortcode Chat Widget */
+.nlwp-shortcode-chat {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 400px;
+}
+
+.nlwp-shortcode-chat .nlwp-chat-messages {
+    height: calc(100% - 120px);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 70px;
+    overflow-y: auto;
+}
+
+.nlwp-shortcode-chat .nlwp-chat-input-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Utility */
+.nlwp-clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .nlwp-chat-window {
+        width: 300px;
+    }
+    
+    .nlwp-position-bottom-right .nlwp-chat-window,
+    .nlwp-position-bottom-left .nlwp-chat-window {
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+    }
+    
+    .nlwp-position-bottom-right .nlwp-chat-window.active,
+    .nlwp-position-bottom-left .nlwp-chat-window.active {
+        transform: translateX(-50%) translateY(0);
+    }
+}

@@ -1,0 +1,114 @@
+/**
+ * NLWeb for WordPress - Admin CSS
+ */
+
+/* Tab Navigation */
+.nav-tab-wrapper {
+    margin-bottom: 20px;
+}
+
+/* Settings Sections */
+.nlwp-section-info {
+    background-color: #f9f9f9;
+    border-left: 4px solid #0073aa;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+/* Content Manager */
+.nlwp-content-manager {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.nlwp-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    min-width: 300px;
+    flex: 1;
+}
+
+.nlwp-card h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.nlwp-form-actions {
+    margin-top: 20px;
+}
+
+.nlwp-form-actions .spinner {
+    float: none;
+    margin-left: 10px;
+}
+
+.nlwp-results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.nlwp-success {
+    color: #46b450;
+}
+
+.nlwp-error {
+    color: #dc3232;
+}
+
+/* Diagnostic Tool Styling */
+.nlwp-details {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+}
+
+.nlwp-details h4 {
+    margin: 10px 0 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nlwp-success {
+    font-weight: bold;
+    color: #46b450;
+}
+
+.nlwp-error {
+    font-weight: bold;
+    color: #dc3232;
+}
+
+.nlwp-notice {
+    background-color: #fcf9e8;
+    border-left: 4px solid #ffba00;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 3px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Responsive */
+@media (max-width: 782px) {
+    .nlwp-content-manager {
+        flex-direction: column;
+    }
+}
