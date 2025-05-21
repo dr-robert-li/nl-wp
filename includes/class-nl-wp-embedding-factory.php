@@ -102,35 +102,32 @@ class NL_WP_Embedding_Factory {
                 
             case 'anthropic':
                 return array(
-                    'claude-3-haiku-20240307' => 'Claude 3 Haiku (1536)',
-                    'claude-3-sonnet-20240229' => 'Claude 3 Sonnet (1536)',
-                    'claude-3-opus-20240229' => 'Claude 3 Opus (1536)'
+                    'voyage-3-large' => 'Voyage 3 Large (1024)',
+                    'voyage-3-large:256' => 'Voyage 3 Large (256)',
+                    'voyage-3-large:512' => 'Voyage 3 Large (512)',
+                    'voyage-3-large:2048' => 'Voyage 3 Large (2048)',
+                    'voyage-3' => 'Voyage 3 (1024)',
+                    'voyage-3-lite' => 'Voyage 3 Lite (512)',
+                    'voyage-code-3' => 'Voyage Code 3 (1024)',
+                    'voyage-code-3:256' => 'Voyage Code 3 (256)',
+                    'voyage-code-3:512' => 'Voyage Code 3 (512)',
+                    'voyage-code-3:2048' => 'Voyage Code 3 (2048)',
+                    'voyage-finance-2' => 'Voyage Finance 2 (1024)',
+                    'voyage-law-2' => 'Voyage Law 2 (1024)'
                 );
                 
             case 'gemini':
                 return array(
                     'embedding-001' => 'embedding-001 (768)',
-                    'text-embedding-004' => 'text-embedding-004 (768)'
+                    'text-embedding-004' => 'text-embedding-004 (768)',
+                    'gemini-embedding-exp' => 'gemini-embedding-exp (1408)'
                 );
                 
             case 'ollama':
                 return array(
                     'nomic-embed-text' => 'nomic-embed-text (768)',
-                    'gemma:2b' => 'Gemma 2B (2048)',
-                    'gemma:7b' => 'Gemma 7B (2048)',
-                    'llama3' => 'Llama 3 8B (4096)',
-                    'llama3:8b' => 'Llama 3 8B (4096)',
-                    'llama3:70b' => 'Llama 3 70B (4096)',
-                    'mistral' => 'Mistral (4096)',
-                    'mistral-openorca' => 'Mistral OpenOrca (4096)',
-                    'phi3' => 'Phi-3 Mini (2048)',
-                    'phi3:14b' => 'Phi-3 14B (2048)',
-                    'phi2' => 'Phi-2 (2048)',
-                    'qwen2' => 'Qwen 2 7B (4096)',
-                    'qwen2:7b' => 'Qwen 2 7B (4096)',
-                    'qwen2:14b' => 'Qwen 2 14B (4096)',
-                    'deepseek-coder' => 'DeepSeek Coder (2048)',
-                    'deepseek-coder:6.7b' => 'DeepSeek Coder 6.7B (2048)'
+                    'snowflake-arctic-embed2' => 'snowflake-arctic-embed2 (1024)',
+                    'granite-embedding' => 'granite-embedding (1536)'
                 );
                 
             default:
@@ -151,7 +148,7 @@ class NL_WP_Embedding_Factory {
                 return 'text-embedding-3-small';
                 
             case 'anthropic':
-                return 'claude-3-haiku-20240307';
+                return 'voyage-3';
                 
             case 'gemini':
                 return 'embedding-001';

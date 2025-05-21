@@ -17,6 +17,7 @@ class NL_WP_Gemini_Provider extends NL_WP_Embedding_Provider {
         $dimensions = array(
             'embedding-001' => 768,
             'text-embedding-004' => 768,
+            'gemini-embedding-exp' => 1408
         );
         
         return isset($dimensions[$model]) ? $dimensions[$model] : 768;

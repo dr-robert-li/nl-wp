@@ -16,6 +16,9 @@
         
         // Initialize diagnostics
         initDiagnostics();
+        
+        // Initialize dynamic model selection
+        initDynamicModelSelection();
     }
 
     /**
@@ -288,6 +291,101 @@
                     $spinner.css('visibility', 'hidden');
                 }
             });
+        });
+    }
+
+    /**
+     * Initialize dynamic model selection functionality.
+     * This updates the model options in real-time when the provider changes.
+     */
+    function initDynamicModelSelection() {
+        var $providerSelect = $('#nlwp_embedding_provider');
+        var $modelSelect = $('#nlwp_embedding_model');
+        
+        if (!$providerSelect.length || !$modelSelect.length) {
+            return;
+        }
+        
+        // Define models for each provider
+        var providerModels = {
+            'openai': {
+                'text-embedding-3-small': 'text-embedding-3-small (1536)',
+                'text-embedding-3-large': 'text-embedding-3-large (3072)',
+                'text-embedding-ada-002': 'text-embedding-ada-002 (1536, legacy)'
+            },
+            'anthropic': {
+                'voyage-3-large': 'Voyage 3 Large (1024)',
+                'voyage-3-large:256': 'Voyage 3 Large (256)',
+                'voyage-3-large:512': 'Voyage 3 Large (512)',
+                'voyage-3-large:2048': 'Voyage 3 Large (2048)',
+                'voyage-3': 'Voyage 3 (1024)',
+                'voyage-3-lite': 'Voyage 3 Lite (512)',
+                'voyage-code-3': 'Voyage Code 3 (1024)',
+                'voyage-code-3:256': 'Voyage Code 3 (256)',
+                'voyage-code-3:512': 'Voyage Code 3 (512)',
+                'voyage-code-3:2048': 'Voyage Code 3 (2048)',
+                'voyage-finance-2': 'Voyage Finance 2 (1024)',
+                'voyage-law-2': 'Voyage Law 2 (1024)'
+            },
+            'gemini': {
+                'embedding-001': 'embedding-001 (768)',
+                'text-embedding-004': 'text-embedding-004 (768)',
+                'gemini-embedding-exp': 'gemini-embedding-exp (1408)'
+            },
+            'ollama': {
+                'nomic-embed-text': 'nomic-embed-text (768)',
+                'snowflake-arctic-embed2': 'snowflake-arctic-embed2 (1024)',
+                'granite-embedding': 'granite-embedding (1536)'
+            }
+        };
+        
+        // Default models for each provider
+        var defaultModels = {
+            'openai': 'text-embedding-3-small',
+            'anthropic': 'voyage-3',
+            'gemini': 'embedding-001',
+            'ollama': 'nomic-embed-text'
+        };
+        
+        // Function to update models based on selected provider
+        function updateModels(provider, currentModel) {
+            // Clear existing options
+            $modelSelect.empty();
+            
+            // Check if provider exists in our definition
+            if (!providerModels[provider]) {
+                return;
+            }
+            
+            // Get models for selected provider
+            var models = providerModels[provider];
+            
+            // If no current model is provided, use default
+            if (!currentModel || !models[currentModel]) {
+                currentModel = defaultModels[provider];
+            }
+            
+            // Add options for each model
+            $.each(models, function(key, name) {
+                var $option = $('<option></option>').val(key).text(name);
+                
+                if (key === currentModel) {
+                    $option.attr('selected', 'selected');
+                }
+                
+                $modelSelect.append($option);
+            });
+        }
+        
+        // Update models immediately when page loads
+        var currentProvider = $providerSelect.val();
+        var currentModel = $modelSelect.val();
+        updateModels(currentProvider, currentModel);
+        
+        // Update models when provider changes
+        $providerSelect.on('change', function() {
+            var provider = $(this).val();
+            updateModels(provider);
         });
     }
 

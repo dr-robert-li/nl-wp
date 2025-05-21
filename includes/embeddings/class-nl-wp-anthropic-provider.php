@@ -15,10 +15,23 @@ class NL_WP_Anthropic_Provider extends NL_WP_Embedding_Provider {
      */
     protected function get_dimension_for_model($model) {
         $dimensions = array(
-            'claude-3-haiku-20240307' => 1536,
-            'claude-3-sonnet-20240229' => 1536,
-            'claude-3-opus-20240229' => 1536
+            // Voyage model family
+            'voyage-3-large' => 1024,
+            'voyage-3' => 1024,
+            'voyage-3-lite' => 512,
+            'voyage-code-3' => 1024,
+            'voyage-finance-2' => 1024,
+            'voyage-law-2' => 1024
         );
+
+        // Handle custom dimensions for models that support it
+        if (strpos($model, ':') !== false) {
+            list($base_model, $dimension) = explode(':', $model, 2);
+            if (in_array($base_model, ['voyage-3-large', 'voyage-code-3']) && 
+                in_array($dimension, ['256', '512', '1024', '2048'])) {
+                return (int)$dimension;
+            }
+        }
         
         return isset($dimensions[$model]) ? $dimensions[$model] : 1536;
     }

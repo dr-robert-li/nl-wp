@@ -38,22 +38,8 @@ class NL_WP_Ollama_Provider extends NL_WP_Embedding_Provider {
     protected function get_dimension_for_model($model) {
         $dimensions = array(
             'nomic-embed-text' => 768,
-            'gemma:2b' => 2048,
-            'gemma:7b' => 2048,
-            'llama3' => 4096,
-            'llama3:8b' => 4096,
-            'llama3:70b' => 4096,
-            'llama2' => 4096,
-            'mistral' => 4096,
-            'mistral-openorca' => 4096,
-            'phi3' => 2048,
-            'phi3:14b' => 2048,
-            'phi2' => 2048,
-            'qwen2' => 4096,
-            'qwen2:7b' => 4096,
-            'qwen:14b' => 4096,
-            'deepseek-coder' => 2048,
-            'deepseek-coder:6.7b' => 2048,
+            'snowflake-arctic-embed2' => 1024,
+            'granite-embedding' => 1536
         );
         
         return isset($dimensions[$model]) ? $dimensions[$model] : 2048;

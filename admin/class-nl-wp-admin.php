@@ -430,7 +430,7 @@ class NL_WP_Admin {
         
         <script>
             jQuery(document).ready(function($) {
-                // When provider changes, refresh the page to show the appropriate models
+                // When provider changes, save the value via AJAX (but don't reload)
                 $('#nlwp_embedding_provider').on('change', function() {
                     // Save the selected value via AJAX
                     var provider = $(this).val();
@@ -443,8 +443,8 @@ class NL_WP_Admin {
                             provider: provider
                         },
                         success: function(response) {
-                            // Reload the page to show the appropriate models
-                            window.location.reload();
+                            // Model selection is now handled by JavaScript in nl-wp-admin.js
+                            // No page reload needed
                         }
                     });
                 });
